@@ -6,8 +6,11 @@ function fetchResults()
     RepToken.badges(0x64319CA297239d8652A0b5f0F12dD6666cB0e05b, function(error, result){
         if(!error)
         {
+            //go to the thing first
             $("#badge_result").html(result[0]+' ('+result[1]+' years old)' + result[2] + result[3]);
             console.log(result);
+            $("#results").removeAttr("hidden");
+            window.location.href = "#results";
 
             for (var i = 0; i < result.length; i++)
             {
