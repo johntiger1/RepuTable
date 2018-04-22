@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RepuTable landing</title>
+
+
+        <link rel="stylesheet" type="text/css" href="main.css">
+
+        <script src="../node_modules/web3/dist/web3.min.js"></script>
+
+
+</head>
+<body>
+<div class="container">
+
+    <h1>RepToken Viewer</h1>
+
+
+    <div>
+        <label for="uaddress">Choose a wallet: </label>
+        <input type="text" id="uaddress" name="address">
+    </div>
+    <div>
+        <button onclick="fetchResults()">Submit</button>
+    </div>
+
+    <div id="badge_result">
+
+
+    </div>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+<script>
+    // Our future code here..
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+    } else {
+        // set the provider you want from Web3.providers
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    }
+
+    //alternatively, use my address: 0x64319CA297239d8652A0b5f0F12dD6666cB0e05b
+    web3.eth.defaultAccount = web3.eth.accounts[0];
+    var RepTokenContract = web3.eth.contract([
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "addr",
+                    "type": "address"
+                }
+            ],
+            "name": "getBadges",
+            "outputs": [
+                {
+                    "name": "issuer",
+                    "type": "address"
+                },
+                {
+                    "name": "hoursVolunteered",
+                    "type": "uint256"
+                },
+                {
+                    "name": "skills",
+                    "type": "string"
+                },
+                {
+                    "name": "tweet",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [],
+            "name": "getIstat",
+            "outputs": [
+                {
+                    "name": "i",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "honoree",
+                    "type": "address"
+                },
+                {
+                    "name": "attr",
+                    "type": "string"
+                }
+            ],
+            "name": "sendRepBadge",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "badges",
+            "outputs": [
+                {
+                    "name": "issuer",
+                    "type": "address"
+                },
+                {
+                    "name": "hoursVolunteered",
+                    "type": "uint256"
+                },
+                {
+                    "name": "skills",
+                    "type": "string"
+                },
+                {
+                    "name": "tweet",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "getStatus",
+            "outputs": [
+                {
+                    "name": "s",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]);
+
+    var RepToken = RepTokenContract.at('0xd52b24d3793e98c6ee7c4a671f6aefa35e25c8ba');
+    console.log(RepToken);
+    console.log("this is running");
+
+
+</script>
+<script src="index.js"></script>
+</body>
+</html>
