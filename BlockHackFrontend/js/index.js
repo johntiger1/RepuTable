@@ -25,13 +25,18 @@ function fetchResults()
             var img_id = "#logo" + count;
             $(img_id).attr("src","img/arc.png");
 
-            $("#logo1").attr("src", "img/khan.png")
+            $("#logo1").attr("src", "img/khan.png");
             $(but7).text( "0xd52b24d3793e98c6ee7c4a671f6aefa35e25c8ba");
             $(but8).text( 90);
             $(but9).text( "Calculus, Programming, Agile");
-            $(but10).text("Frisha was a fantastic pro bono developer for our small charity!")
+            $(but10).text("Frisha was a fantastic pro bono developer for our small charity!");
 
 
+            $("#logo2").attr("src", "img/khan.png");
+            $(but7).text( "0xd52b24d3793e98c6ee7c4a671f6aefa35e25c8ba");
+            $(but8).text( 90);
+            $(but9).text( "Calculus, Programming, Agile");
+            $(but10).text("Frisha was a fantastic pro bono developer for our small charity!");
 
             //add another result:
 

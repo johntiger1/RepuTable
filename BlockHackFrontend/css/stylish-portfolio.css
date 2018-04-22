@@ -639,3 +639,11 @@ input::-webkit-input-placeholder {
 
     font-size: 2em;
 }
+
+.badge-cont{
+  padding-bottom: 3em;
+}
+
+/*#first-badge{*/
+  /*padding-bottom: ;*/
+/*}*/
