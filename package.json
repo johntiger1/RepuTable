@@ -1,0 +1,29 @@
+{
+  "name": "reputable",
+  "version": "1.0.0",
+  "description": "Node backend for RepuTable, a reputation token for NGOs and NPOs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johntiger1/RepuTable.git"
+  },
+  "keywords": [
+    "coin",
+    "ngo",
+    "blockchain"
+  ],
+  "author": "John Chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johntiger1/RepuTable/issues"
+  },
+  "homepage": "https://github.com/johntiger1/RepuTable#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.85.0",
+    "requests": "^0.2.2"
+  }
+}
