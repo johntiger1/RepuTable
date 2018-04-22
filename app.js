@@ -6,7 +6,7 @@ var app            =        express();
 var http = require("http");
 var request = require('request');
 
-// app.use(express.static('.'));
+app.use(express.static('./BlockhackFrontend'));
 
 
 app.get('/handle',function(request,response){

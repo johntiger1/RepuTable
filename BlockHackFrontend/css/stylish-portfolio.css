@@ -93,7 +93,7 @@ h6 {
   height: auto;
   padding-top: 8rem;
   padding-bottom: 8rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../img/data_bg_light.png");
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../img/repu_back.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -103,7 +103,7 @@ h6 {
   font-size: 4rem;
   margin: 0;
   padding: 0;
-    color: ghostwhite;
+    color: black;
 }
 
 .masthead h3 {
@@ -627,7 +627,7 @@ a:hover, a:focus, a:active {
   font-size: 6em;
 }
 
-#search{
+#results{
   height: 100%;
 
 }
