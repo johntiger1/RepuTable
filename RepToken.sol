@@ -34,25 +34,14 @@ contract RepToken is ERC721 {
     
     //Send a badge to the honoree.
     function sendRepBadge(address honoree, string attr){
-        var ( issuer,  hoursVolunteered,  skills,  tweet) = createRepBadge(attr);
-        badges[honoree] = GenericRepBadge( issuer,  hoursVolunteered,  skills,  tweet);
+       
+        badges[honoree] = createRepBadge(attr);
         
         
     } 
     
-    //Function that will create a repBadge and add it to the address of the sender 
-    function createRepBadge(string attr) internal returns (address issuer, uint hoursVolunteered, string skills, string tweet)
-    {
-        //need to parse the string attribute
-        
-        return (msg.sender, 25, "Customer Service, Teamwork, Music", "Billy was a great front-desk staff for our organization!");
-        
-        // badges[msg.sender] = attr;
-        
-        
-    }
 
-    function createRepBadge_struct(string attr) internal returns (GenericRepBadge)
+    function createRepBadge(string attr) internal returns (GenericRepBadge)
     {
         //need to parse the string attribute
         
