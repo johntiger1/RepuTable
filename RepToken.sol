@@ -43,6 +43,8 @@ contract RepToken {
 
     function createRepBadge(string attr) internal returns (GenericRepBadge gr)
     {
+
+            //multiple if statmeents
         return GenericRepBadge(msg.sender, 25, "Customer Service, Teamwork, Music", "Billy was a great front-desk staff for our organization!");
     }
     

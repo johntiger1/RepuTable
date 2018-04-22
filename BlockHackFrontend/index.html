@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="DataEx Team">
+
+    <title>Repu Table</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../node_modules/web3/dist/web3.min.js"></script>
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation -->
+    <a class="menu-toggle rounded" href="#">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#page-top">Home</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#file_upload">Data</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead d-flex">
+      <div class="container text-center my-auto">
+        <h1 class="mb-1">Repu Table</h1>
+        <h3 class="mb-5">
+          Reputation for the <strong> blockchain age </strong>
+        </h3>
+        <form>
+          <div class="form-row" >
+            <div class="col-12 col-md-9 mb-2 mb-md-0">
+              <input type="email" class="form-control form-control-lg" placeholder="Search by wallet...">
+            </div>
+            <div class="col-12 col-md-3" >
+              <!--<button type="submit" class="btn btn-block btn-lg btn-primary" onclick="window.location.href='/#results'">Search</button>-->
+              <a class="btn btn-primary btn btn-block btn-lg btn-primary" href="#results" role="button" onclick="fetchResults()">Search</a>
+            </div>
+          </div>
+        </form>
+
+        <!--<a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>-->
+      </div>
+      <div class="overlay"></div>
+    </header>
+
+    <!-- About -->
+    <section class="mini-section bg-light" id="about">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h2>DataX Motivation</h2>
+            <p class="lead mb-5">
+              Like an oil pipeline for oil, DataX is a data pipeline for data. But there is no middle person here;
+              it is all decentralized.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="results">
+      <div class="container text-center">
+        <h1 class="mx-auto mb-5">Results</h1>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-9 mx-auto">
+              <div id="badge_result">
+
+
+              </div>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <ul class="list-inline mb-5">
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="facebook.com/DataX">
+              <i class="icon-social-facebook"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="twitter.com/DataX">
+              <i class="icon-social-twitter"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white" href="github.com/DataX">
+              <i class="icon-social-github"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="text-muted small mb-0"> RepuTable 2018</p>
+      </div>
+    </footer>
+
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/stylish-portfolio.min.js"></script>
+    <script src="js/file_upload/file_upload.js"></script>
+    <script src="js/client.js"></script>
+  <script src="js/smooth_button.js"></script>
+  <script src="js/get_results.js"></script>
+
+    <script>
+        // Our future code here..
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+
+        //alternatively, use my address: 0x64319CA297239d8652A0b5f0F12dD6666cB0e05b
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+        var RepTokenContract = web3.eth.contract([
+            {
+                "constant": false,
+                "inputs": [
+                    {
+                        "name": "addr",
+                        "type": "address"
+                    }
+                ],
+                "name": "getBadges",
+                "outputs": [
+                    {
+                        "name": "issuer",
+                        "type": "address"
+                    },
+                    {
+                        "name": "hoursVolunteered",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "skills",
+                        "type": "string"
+                    },
+                    {
+                        "name": "tweet",
+                        "type": "string"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "constant": false,
+                "inputs": [],
+                "name": "getIstat",
+                "outputs": [
+                    {
+                        "name": "i",
+                        "type": "uint256"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "constant": false,
+                "inputs": [
+                    {
+                        "name": "honoree",
+                        "type": "address"
+                    },
+                    {
+                        "name": "attr",
+                        "type": "string"
+                    }
+                ],
+                "name": "sendRepBadge",
+                "outputs": [],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [
+                    {
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "name": "badges",
+                "outputs": [
+                    {
+                        "name": "issuer",
+                        "type": "address"
+                    },
+                    {
+                        "name": "hoursVolunteered",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "skills",
+                        "type": "string"
+                    },
+                    {
+                        "name": "tweet",
+                        "type": "string"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "getStatus",
+                "outputs": [
+                    {
+                        "name": "s",
+                        "type": "string"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ]);
+
+        var RepToken = RepTokenContract.at('0xd52b24d3793e98c6ee7c4a671f6aefa35e25c8ba');
+        console.log(RepToken);
+        console.log("this is running");
+
+
+    </script>
+    <script src="js/index.js"></script>
+  </body>
+
+</html>
