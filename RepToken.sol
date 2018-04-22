@@ -7,12 +7,10 @@ import "./ERC721_lite.sol";
 //Reputation token contract
 contract RepToken {
     
-    //TODO: change the mapping to be from address => GenericRepBadge[]
-    //and also provide an index into the array/get the length
-
     //"user" => GenericRepBadge
     mapping (address => GenericRepBadge) public badges;
-    
+    string status;
+    uint i_stat;
     struct GenericRepBadge{
         
         address issuer; 
@@ -37,16 +35,26 @@ contract RepToken {
     //Send a badge to the honoree.
     function sendRepBadge(address honoree, string attr){
         badges[honoree] = createRepBadge(attr);
+        status = attr;
+        uint i_stat = 12;
 
     } 
     
 
-    function createRepBadge(string attr) internal returns (GenericRepBadge)
+    function createRepBadge(string attr) internal returns (GenericRepBadge gr)
     {
         return GenericRepBadge(msg.sender, 25, "Customer Service, Teamwork, Music", "Billy was a great front-desk staff for our organization!");
     }
     
-
+    function getStatus() constant returns (string s)
+    {
+        
+        return status;
+    }
+    
+    function getIstat() returns (uint i){
+        return i_stat;
+    }
 
 
 }
