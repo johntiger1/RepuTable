@@ -54,7 +54,7 @@
             </div>
             <div class="col-12 col-md-3" >
               <!--<button type="submit" class="btn btn-block btn-lg btn-primary" onclick="window.location.href='/#results'">Search</button>-->
-              <a class="btn btn-primary btn btn-block btn-lg btn-primary" href="#results" role="button" onclick="fetchResults()">Search</a>
+              <a class="btn btn-primary btn btn-block btn-lg btn-primary rounded js-scroll-trigger" href="#results" role="button" onclick="fetchResults()">Search</a>
             </div>
           </div>
         </form>
@@ -174,8 +174,10 @@
     <script>
         // Our future code here..
         if (typeof web3 !== 'undefined') {
+            console.log("web3 defined" );
             web3 = new Web3(web3.currentProvider);
         } else {
+            console.log("web3 not def");
             // set the provider you want from Web3.providers
             web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
         }
