@@ -644,6 +644,10 @@ input::-webkit-input-placeholder {
   padding-bottom: 3em;
 }
 
+#results{
+
+  display: none;
+}
 /*#first-badge{*/
   /*padding-bottom: ;*/
 /*}*/

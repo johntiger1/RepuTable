@@ -10,7 +10,23 @@ function fetchResults()
             $("#badge_result").html(result[0]+' ('+result[1]+' years old)' + result[2] + result[3]);
             console.log(result);
             $("#results").removeAttr("hidden");
-            window.location.href = "#results";
+            $("#results").css("display", "inline");
+
+            var $root = $('html, body');
+
+            $('a[href^="#"]').click(function() {
+                var href = $.attr(this, 'href');
+
+                $root.animate({
+                    scrollTop: $(href).offset().top
+                }, 500, function () {
+                    window.location.hash = href;
+                });
+
+                return false;
+            });
+
+            window.location.href = "#results"; //simply need THIS to go to the results page
 
             for (var i = 0; i < result.length; i++)
             {
