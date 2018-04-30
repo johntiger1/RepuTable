@@ -72,3 +72,6 @@ Probably the best to do is something like this:
 
 https://stackoverflow.com/questions/24602993/window-location-hash-scroll-down-isnt-smooth-only-scroll-left?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 
+
+Todo: move rep code out of index.html.
+Deploy to REAL LIFE ETHEREUM (Test) NETWORK
