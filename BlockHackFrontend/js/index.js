@@ -3,7 +3,7 @@
 function fetchResults()
 {
     var count =0 ;
-    RepToken.badges(0x64319CA297239d8652A0b5f0F12dD6666cB0e05b, function(error, result){
+    RepToken.badges(0x861a62c1c6f063d8b91eb8bd8869767275e0b4a2, function(error, result){
         if(!error)
         {
             //go to the thing first

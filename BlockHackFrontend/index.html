@@ -176,6 +176,8 @@
         if (typeof web3 !== 'undefined') {
             console.log("web3 defined" );
             web3 = new Web3(web3.currentProvider);
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
         } else {
             console.log("web3 not def");
             // set the provider you want from Web3.providers
@@ -183,6 +185,8 @@
         }
 
         //alternatively, use my address: 0x64319CA297239d8652A0b5f0F12dD6666cB0e05b
+
+        //Set the account to send from
         web3.eth.defaultAccount = web3.eth.accounts[0];
         var RepTokenContract = web3.eth.contract([
             {
@@ -295,7 +299,12 @@
             }
         ]);
 
-        var RepToken = RepTokenContract.at('0xd52b24d3793e98c6ee7c4a671f6aefa35e25c8ba');
+        // var RepToken = RepTokenContract.at('0xd52b24d3793e98c6ee7c4a671f6aefa35e25c8ba');
+
+        var RepToken = RepTokenContract.at('0xb94d81ab0e7781cea8eee33ff4bbafb7309739e5');
+
+
+        RepToken.sendRepBadge(0x861a62c1c6f063d8b91eb8bd8869767275e0b4a2, "my_stat", {gas:"1000000"});
         console.log(RepToken);
         console.log("this is running");
 
